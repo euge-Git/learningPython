@@ -1,0 +1,87 @@
+#disease outbreak on the iss
+
+invalid = "That was not a valid input. Please try again"
+rabies = "You have rabies. As the diseaes progress you develop symptons of partial paralysis, anxiety, insomnia, confusion, agitation, abnormal behavior, paranoia, terror, hydrophobia and hallucinations, progressing to delirium and coma."
+mwkee = "The patient is put into a Ketamine induced coma for six days and given antiviral medication."
+goodtreat = "\nThe solution is sucessful."
+badtreat = "The solution is not successful."
+kuru_prion = "The effects of the prions become more pronounced and the Kuru diseases progresses. \nThe patient develops symptons of tremors, emotional instability and uncontrollable laughter."
+zomb = "\nThe patient will turn into a zombie."
+pray2cthulu = "You turn the pages of the Necronomicon to find a passage and chant: \nPh'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn \n(In his house at R'lyeh, dead Cthulhu waits dreaming)."
+goodpray = "\nYour prayers are answered and the Kuru is reversed."
+badpray = "\nYour prayers are not answered."
+cray = "\nSuch communication is not meant for mere mortals and you descend into madness."
+tieshoes = "You tie the shoelaces of the infected person. \nA zombie wouldn't know how to untie their shoes and would be slowed to a crawl."
+kuru_infect = "Do you want Kuru? Because that's how you get Kuru."
+eject = "The body is ejected towards Earth. \nThey burn up in the atmosphere on the descent."
+calm_bomb = "No need to dispose of the body. Just be calm like a bomb. \nThere's a widow pig parrot \nA rebel to tame \nA whitehooded judge \nA syringe and a vein \nAnd tha riot be tha rhyme of tha unheard. \nwhat ya say, what ya say, what ya say, what?"
+
+def iss_outbreak():  
+  print("When making your choices, please enter a number and nothing else.\n\n")
+  print("While working in the lab on the International Space Station an accident occurs...")
+  patient_zero = int(input("Who gets infected? Your choices are:\n1. Me \n2. Crewmate\n\n"))
+  if patient_zero == 1:
+    print("You're infected.\n")
+  elif patient_zero == 2:
+    print("Crewmember is infected\n")
+  else:
+    print(invalid)
+    iss_outbreak()
+  
+  
+  contagen = int(input("What did the vial say? Your choices are:\n1. Rabies\n2. Kuru\n3. Zombies\n\n"))
+  if contagen == 1 and patient_zero == 1:
+    print("You have contracted rabies.\n")
+  elif contagen == 1 and patient_zero == 2:
+    print("Your crewmate has contracted rabies\n")
+  elif contagen == 2 and patient_zero == 1:
+    print("You have contracted Kuru\n")
+  elif contagen == 2 and patient_zero == 2:
+    print("Your cremate has contracted Kuru\n")
+  elif contagen == 3 and patient_zero == 1:
+    print("You have contracted a disease that will turn you into a zombie.\n")
+  elif contagen == 3 and patient_zero == 2:
+    print("Your crewmate has contracted rabies\n")
+  else:
+    print(invalid)
+    iss_outbreak()
+
+  cure = int(input("What do you try to contain the situation? Your choices are:\n1. Milwaukee Protocol \n2. Tie shoelaces \n3. Pray to the Cthulu \n\n"))
+  if cure == 1 and contagen == 1:
+    print(mwkee, goodtreat)
+  elif cure == 1 and contagen == 2:
+    print(mwkee, badtreat, kuru_prion)
+  elif cure == 1 and contagen == 3:
+    print(mwkee, badtreat, zomb)
+  elif cure == 2 and contagen == 1:
+    print(tieshoes, badtreat, rabies)
+  elif cure == 2 and contagen == 2:
+    print(tieshoes, badtreat, kuru_prion)
+  elif cure == 2 and contagen == 3:
+    print(tieshoes, goodtreat, zomb)
+  elif cure == 3 and contagen == 1:
+    print(pray2cthulu, badpray, rabies)
+  elif cure == 3 and contagen == 2:
+    print(pray2cthulu, goodpray, cray)
+  elif cure == 3 and contagen == 3:
+    print(pray2cthulu, badpray, cray)
+  else:
+    print(invalid)
+    iss_outbreak()
+  
+  dispose = int(input("\nWhat will you do to get rid of the bodies? Your choices are:\n1. Eject them into space \n2. Eat them \n\n"))
+  if cure == 1 and contagen == 1:
+    print(calm_bomb)
+  elif dispose == 1:
+    print(eject)
+  elif dispose == 2:
+    print(kuru_infect)
+  else:
+    print(invalid)
+  
+  again = int(input("\n\n\nDo you wish to try this scenario again? Your choices are: \n1. Yes \n2. No \n\n"))
+  if again == 1:
+    iss_outbreak()
+  elif again == 2:
+    pass
+iss_outbreak()
